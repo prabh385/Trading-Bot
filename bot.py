@@ -5,7 +5,12 @@ from binance.client import Client
 from binance.exceptions import BinanceAPIException
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO, 
+                    format='%(asctime)s - %(levelname)s - %(message)s',
+                    handlers=[
+                        logging.FileHandler("trading_bot.log"),
+                        logging.StreamHandler()
+                    ])
 
 class BasicBot:
     def __init__(self, api_key, api_secret, testnet=True):
